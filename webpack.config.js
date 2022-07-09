@@ -1,5 +1,6 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CnameWebpackPlugin = require('cname-webpack-plugin');
 
 module.exports ={
     mode : 'development',
@@ -32,9 +33,12 @@ module.exports ={
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Joe Khawand',
-            filename: 'index.html',
-            template: 'src/template.html',
+          title: 'Joe Khawand',
+          filename: 'index.html',
+          template: 'src/template.html',
+        }),
+        new CnameWebpackPlugin({
+          domain: 'www.joe-khawand.tech',
         }),
     ],
 }
