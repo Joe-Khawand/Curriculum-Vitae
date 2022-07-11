@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import './styles/main.css';
 
 //Create the 3D scene
 const scene = new THREE.Scene();

@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { mainModule } = require('process');
 
 module.exports ={
-    mode : 'development',
+    mode : 'production',//can be changed to development
     entry: {
         bundle: path.resolve(__dirname, 'src/index.js'),
       },
@@ -29,6 +31,13 @@ module.exports ={
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
             type: 'asset/resource',
           },
+          {
+            test: /\.css$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              'css-loader',
+              'sass-loader'],
+          },
         ],
     },
     plugins: [
@@ -39,6 +48,9 @@ module.exports ={
         }),
         new CnameWebpackPlugin({
           domain: 'www.joe-khawand.tech',
+        }),
+        new MiniCssExtractPlugin({
+          filename: 'main.css'
         }),
     ],
 }
