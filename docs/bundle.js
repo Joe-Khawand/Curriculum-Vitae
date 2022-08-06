@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n //import Icon from './icon.png';\n\n/*\nimport * as THREE from 'three';\n\n//Create the 3D scene\nconst scene = new THREE.Scene();\n//Create the camera\nconst camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );\n//Choose the renderer\nconst renderer = new THREE.WebGLRenderer();\nrenderer.setSize( window.innerWidth, window.innerHeight );\ndocument.body.appendChild( renderer.domElement );\n\n//Adding a box\nconst geometry = new THREE.BoxGeometry( 1, 1, 1 );\nconst material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );\n//A mesh takes a geometry and a meterial\nconst cube = new THREE.Mesh( geometry, material );\nscene.add( cube ); //Add the mesh to the scene\n\ncamera.position.z = 5;//Position the camera\n\n//*Like basic OpenGL we need a function thats loops and displays our objects on the screen\nfunction animate() {\n\trequestAnimationFrame( animate );\n    //add animation in this block\n    cube.rotation.x += 0.01;\n    cube.rotation.y += 0.02;\n    //\n\trenderer.render( scene, camera );\n}\n\nanimate();\n*/\n\n//# sourceURL=webpack://curriculum-vitae/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n\n\n//# sourceURL=webpack://curriculum-vitae/./src/index.js?");
 
 /***/ }),
 
