@@ -45,6 +45,7 @@ module.exports ={
           title: 'Joe Khawand',
           filename: 'index.html',
           template: 'src/template.html',
+          favicon: 'src/assets/img/favicon.ico',
         }),
         new CnameWebpackPlugin({
           domain: 'www.joe-khawand.tech',
