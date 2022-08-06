@@ -1,25 +1,162 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans);
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
 body {
     margin: 0;
-    background-color: black;
-}
-h1{
-    color: goldenrod;
-}
-.navbar{
-    list-style-type: none;
-    margin: 0;
     padding: 0;
-    padding-right: 20%;
-    overflow: hidden;
-}
-li {
-    float: right;
+    font-size: 100%;
+    line-height: 1.5;
+    color: #555;
+    font-family: 'Nunito Sans', sans-serif;
+    overflow: hidden; /* Hide scrollbars */
 }
 
-li a {
-    display: block;
-    color: white;
+h1 {
+    margin: .67em 0;
+    font-size: 2.5rem;
+}
+
+#boids-js {
+    background: #1488CC;
+    display: flex;
+    vertical-align: bottom;
+    width: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed
+}
+
+
+.header {
+    z-index: 1;
     text-align: center;
-    padding: 14px 16px;
+    color: #fff;
+    position: absolute;
+    font-family: 'Rubik', sans-serif;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}
+
+.header .site-title {
+    font-size: 35px;
+    display: block;
+    line-height: 1;
+    color: #fff;
+}
+
+@media only screen and (min-width:550px) {
+    .header .site-title {
+        margin: 0;
+        font-size: 100px
+    }
+}
+
+.header .site-description {
+    font-size: 20px;
+    display: block;
+    line-height: 1;
+    color: #fff;
+    margin-top: 10px
+}
+
+@media only screen and (min-width:550px) {
+    .header .site-description {
+        font-size: 40px
+    }
+}
+
+.header-links {
+    margin: 10px
+}
+
+.header-links .link {
+    color: #fff;
     text-decoration: none;
+    font-size: 15px;
+    margin: 10px
+}
+
+@media only screen and (min-width:550px) {
+    .header-links .link {
+        font-size: 20px
+    }
+}
+
+.header-icons {
+    display: flex;
+    justify-content: center;
+    text-align: center
+}
+
+.down,
+.header-icons .icon {
+    color: #fff;
+    text-align: center
+}
+
+.header-icons .icon {
+    height: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transition: all .7s;
+    width: 20px;
+    font-size: 20px;
+    margin: 5px
+}
+
+.header-icons .icon:active,
+.header-icons .icon:hover {
+    color: #1488CC;
+    background: #fff
+}
+
+@media only screen and (min-width:550px) {
+    .header-icons .icon {
+        width: 35px;
+        height: 35px;
+        font-size: 35px
+    }
+}
+
+.down {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    font-size: 30px;
+    cursor: pointer
+}
+
+.down .icon {
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    fill: #fff;
+    -webkit-animation: pulse 1.3s infinite;
+    animation: pulse 1.3s infinite
+}
+
+.down .icon:active,
+.down .icon:hover,
+.footer a:active,
+.footer a:hover {
+    color: #4b5664
 }
