@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { mainModule } = require('process');
 
 module.exports ={
-    mode : 'production',//can be changed to development
+    mode : 'development',//options : development production
     entry: {
         bundle: path.resolve(__dirname, 'src/index.js'),
       },
@@ -29,7 +29,7 @@ module.exports ={
           },
           {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/resource',
+            type: 'asset/img/jpg',
           },
           {
             test: /\.css$/,
@@ -45,6 +45,7 @@ module.exports ={
           title: 'Joe Khawand',
           filename: 'index.html',
           template: 'src/template.html',
+          favicon: 'src/assets/img/favicon.ico',
         }),
         new CnameWebpackPlugin({
           domain: 'www.joe-khawand.tech',

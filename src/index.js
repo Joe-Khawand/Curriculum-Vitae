@@ -1,5 +1,7 @@
-import * as THREE from 'three';
 import './styles/main.css';
+//import Icon from './icon.png';
+/*
+import * as THREE from 'three';
 
 //Create the 3D scene
 const scene = new THREE.Scene();
@@ -30,3 +32,4 @@ function animate() {
 }
 
 animate();
+*/
