@@ -9,7 +9,7 @@ import { Vector3 } from 'three';
 
 //Create the 3D scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color("rgb(0,0,100)");
+scene.background = new THREE.Color("rgb(20,136,204)");
 
 //Create the camera
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -36,11 +36,11 @@ plane_mesh.rotation.x= Math.PI/2.0;
 scene.add( plane_mesh );
 
 //Adding a box
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+//const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+//const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 //A mesh takes a geometry and a meterial
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube ); //Add the mesh to the scene
+//const cube = new THREE.Mesh( geometry, material );
+//scene.add( cube ); //Add the mesh to the scene
 
 
 //Create Clock
@@ -54,7 +54,8 @@ const nb_boids = 50;
 var dummy_boid = new THREE.Object3D();
 
 const cone_geometry = new THREE.ConeGeometry( 1, 2, 8 );
-const cone_material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+//const cone_material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+const cone_material = new THREE.MeshNormalMaterial();
 //var cone = new THREE.Mesh( cone_geometry, cone_material );
 var cone_mesh = new THREE.InstancedMesh(cone_geometry,cone_material,nb_boids);
 cone_mesh.instanceMatrix.setUsage( THREE.DynamicDrawUsage );//will be update at every frame
@@ -71,6 +72,23 @@ scene.add(cone_mesh);
 var axis = new THREE.Vector3(0, 1, 0);//Up for the boids
 
 window.addEventListener( 'resize', onWindowResize );//resize screen
+
+//const light1 = new THREE.PointLight( "rgb(241,69,69)", 1, 100 );
+//const light2 = new THREE.PointLight( "rgb(69,69,241)", 1, 100 );
+//const light3 = new THREE.PointLight( "rgb(69,241,69)", 1, 100 );
+//const light4 = new THREE.PointLight( "rgb(69,69,69)", 1, 100 );
+//light1.position.set(10 , 50, 0);
+//light2.position.set( 0, -50, 0);
+//light3.position.set( -10, -50, 0);
+//light4.position.set( -10, 50, 0);
+//light1.lookAt(0,0,0);
+//light2.lookAt(0,0,0);
+//light3.lookAt(0,0,0);
+//light4.lookAt(0,0,0);
+//scene.add( light1 );
+//scene.add( light2 );
+//scene.add( light3 );
+//scene.add( light4 );
 
 //*Animation function
 function animate() {
@@ -96,8 +114,8 @@ function animate() {
     cone_mesh.instanceMatrix.needsUpdate = true;
     
     //rotate cube
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.02;
+    //cube.rotation.x += 0.01;
+    //cube.rotation.y += 0.02;
     
     //render
 	renderer.render( scene, camera );
