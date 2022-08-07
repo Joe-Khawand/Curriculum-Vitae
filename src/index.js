@@ -57,6 +57,7 @@ scene.add( cone );
 
 var axis = new THREE.Vector3(0, 1, 0);//Up for the boids
 
+window.addEventListener( 'resize', onWindowResize );//resize screen
 
 //*Animation function
 function animate() {
@@ -78,6 +79,16 @@ function animate() {
     //render
 	renderer.render( scene, camera );
 }
+
+function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
 
 animate();
 
