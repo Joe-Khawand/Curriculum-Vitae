@@ -132,3 +132,34 @@ export function alignment(boids_array,number_boids){
         }
     }
 }
+
+//! Cohesion
+//* Trouve la position du centre des voisins du boid et l'oriente vers celui-ci
+export function cohesion(boids_array,number_boids){
+    for (let i = 0; i < number_boids; i++)
+    {   
+        var p= new Vector3(0,0,0);
+        var nb=0;
+        var d=0;
+        var dummy= new Vector3();
+        for (let j = 0; j < number_boids; j++)
+        {
+            
+            d = boids_array[i].distance_to(boids_array[j]);
+            if(d<30.0){
+                p.addVectors(p,boids_array[j].pos);
+                nb++;  
+            }        
+            
+            if(nb!=0){
+                p.multiplyScalar(1/nb);
+                p.sub(boids_array[i].pos);
+                p.multiplyScalar(0.00001);
+                dummy.copy(boids_array[i].vit);
+                dummy.normalize();
+                dummy.addVectors(dummy,p);
+                boids_array[i].set_vit = dummy;
+            }
+        }
+    }
+}

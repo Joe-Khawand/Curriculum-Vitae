@@ -5,6 +5,7 @@ import './styles/main.css';
 
 import * as THREE from 'three';
 import * as BOIDS from "./js/boids";
+import { Vector3 } from 'three';
 
 //Create the 3D scene
 const scene = new THREE.Scene();
@@ -82,6 +83,7 @@ function animate() {
     //update boid pos
     BOIDS.separation(b_array,nb_boids);
     BOIDS.alignment(b_array,nb_boids);
+    BOIDS.cohesion(b_array,nb_boids);
     //
     let j = 0;
     for(let i = 0; i<nb_boids ; i++ ){
@@ -92,8 +94,6 @@ function animate() {
         cone_mesh.setMatrixAt(j++,dummy_boid.matrix);
     }
     cone_mesh.instanceMatrix.needsUpdate = true;
-    //cone.position.copy(b.pos);
-    //cone.quaternion.setFromUnitVectors(axis, b.vit.clone().normalize());
     
     //rotate cube
     cube.rotation.x += 0.01;
