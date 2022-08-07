@@ -1,9 +1,9 @@
 import { Vector3 } from "three";
 
 // Virtual box containing the boids cube size 60 centre en 0
-const  border_x=40.0;
-const  border_y=40.0;
-const  border_z=40.0;
+const  border_x=70.0;
+const  border_y=70.0;
+const  border_z=70.0;
 
 export class Boid {
     constructor (){
