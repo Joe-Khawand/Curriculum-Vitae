@@ -1,6 +1,5 @@
 import { Vector3 } from "three";
-// Returns a random integer from 0 to 9:
-//Math.floor(Math.random() * 10);
+
 // Virtual box containing the boids cube size 60 centre en 0
 const  border_x=40.0;
 const  border_y=40.0;
@@ -28,7 +27,7 @@ export class Boid {
         return Math.sqrt(Math.pow(this.position.x-b.pos.x,2)+Math.pow(this.position.y-b.pos.y,2)+Math.pow(this.position.z-b.pos.z,2));
     }
     update_pos(dt){
-        var dm = new Vector3();
+        var dm = new Vector3();//dummy vector
         //Evite les collision avec le cube
         if (this.position.x>= border_x)
         {
@@ -51,25 +50,15 @@ export class Boid {
         if(this.position.z<=-border_z){
             this.vitesse.z = Math.abs(this.vitesse.z);
         }
-        //console.log("delta");
-        //console.log(dt);
-        //console.log("vitesse");
-        //console.log(this.vitesse);
-        //console.log(this.vitesse.multiplyScalar(dt));
-        //console.log("position");
-        //console.log(this.position);
-        //console.log(this.vitesse.multiplyScalar(10));
-        //console.log(dm);
         dm.copy(this.vitesse);
         this.position.addVectors(this.position,dm.normalize().multiplyScalar(dt*20));
     }
 }
 
-//Initialise boid array
+//!Initialise boid array
 
 export function initialize_boids(number_boids){
     const boids_array = [];
-
     for (let i = 0; i < number_boids; i++)
     {
        boids_array[i] = new Boid();
@@ -83,7 +72,6 @@ export function separation( boids_array , number_boids){
     var d;
     var dir = new Vector3();
     var dummy= new Vector3();
-    //var norm_dir = Vector3();
 
     for (let i = 0; i < number_boids; i++)
     {   
@@ -95,10 +83,8 @@ export function separation( boids_array , number_boids){
                 if (d<10.0)
                 {
                     dir.copy(boids_array[j].pos).sub(boids_array[i].pos);
-                    //dir.sub(boids_array[i].pos);
-                    dummy.addVectors(boids_array[i].vit.normalize(),dir.normalize().multiplyScalar(0.01/(d+0.00001) -1/(10.0*10.0)))
-                    boids_array[i].set_vit=dummy.normalize();
-                             
+                    dummy.addVectors(boids_array[i].vit.normalize(),dir.normalize().multiplyScalar(0.01/(d+0.00001) -1/(10.0*10.0)))//Varibale can be changed to increase or decrease cohesion
+                    boids_array[i].set_vit=dummy.normalize();   
                 }  
             }
         }
@@ -125,7 +111,7 @@ export function alignment(boids_array,number_boids){
                 }        
             }
             if(nb!=0){
-                v.multiplyScalar(0.001/nb);
+                v.multiplyScalar(0.001/nb);//Varibale can be changed to increase or decrease alignment
                 dummy.copy(boids_array[i].vit).normalize();
                 boids_array[i].set_vit = dummy.addVectors(dummy,v);
             }
@@ -154,7 +140,7 @@ export function cohesion(boids_array,number_boids){
             if(nb!=0){
                 p.multiplyScalar(1/nb);
                 p.sub(boids_array[i].pos);
-                p.multiplyScalar(0.00001);
+                p.multiplyScalar(0.000008);//Varibale can be changed to increase or decrease cohesion
                 dummy.copy(boids_array[i].vit);
                 dummy.normalize();
                 dummy.addVectors(dummy,p);
