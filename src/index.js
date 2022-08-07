@@ -8,7 +8,7 @@ import * as BOIDS from "./js/boids";
 
 //Create the 3D scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color("rgb(0,0,200)");
+scene.background = new THREE.Color("rgb(0,0,100)");
 
 //Create the camera
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -17,7 +17,8 @@ const center = new THREE.Vector3(0,0,0);
 camera.lookAt(center);
 
 //Choose the renderer
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
@@ -48,12 +49,23 @@ var delta = 0;
 
 
 //!Boids
+const nb_boids = 10;
+var dummy_boid = new THREE.Object3D();
+
 const cone_geometry = new THREE.ConeGeometry( 1, 2, 8 );
 const cone_material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-var cone = new THREE.Mesh( cone_geometry, cone_material );
-var b = new BOIDS.Boid();
-cone.position.copy(b.pos);
-scene.add( cone );
+//var cone = new THREE.Mesh( cone_geometry, cone_material );
+var cone_mesh = new THREE.InstancedMesh(cone_geometry,cone_material,nb_boids);
+cone_mesh.instanceMatrix.setUsage( THREE.DynamicDrawUsage );//will be update at every frame
+
+var b_array = BOIDS.initialize_boids(nb_boids);
+//console.log(b_array);
+for(let i = 0; i<nb_boids ; i++ ){
+    dummy_boid.position.copy(b_array[i].pos)
+    dummy_boid.updateMatrix();
+    cone_mesh.setMatrixAt(i++,dummy_boid.matrix);
+}
+scene.add(cone_mesh);
 
 var axis = new THREE.Vector3(0, 1, 0);//Up for the boids
 
@@ -68,9 +80,19 @@ function animate() {
     delta = clock.getDelta();
     
     //update boid pos
-    b.update_pos(delta);
-    cone.position.copy(b.pos);
-    cone.quaternion.setFromUnitVectors(axis, b.vit.clone().normalize());
+    BOIDS.separation(b_array,nb_boids);
+    //
+    let j = 0;
+    for(let i = 0; i<nb_boids ; i++ ){
+        b_array[i].update_pos(delta);
+        dummy_boid.position.copy(b_array[i].pos)
+        dummy_boid.quaternion.setFromUnitVectors(axis, b_array[i].vit.clone().normalize());
+        dummy_boid.updateMatrix();
+        cone_mesh.setMatrixAt(j++,dummy_boid.matrix);
+    }
+    cone_mesh.instanceMatrix.needsUpdate = true;
+    //cone.position.copy(b.pos);
+    //cone.quaternion.setFromUnitVectors(axis, b.vit.clone().normalize());
     
     //rotate cube
     cube.rotation.x += 0.01;
