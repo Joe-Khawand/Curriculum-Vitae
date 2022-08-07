@@ -49,7 +49,7 @@ var delta = 0;
 
 
 //!Boids
-const nb_boids = 10;
+const nb_boids = 50;
 var dummy_boid = new THREE.Object3D();
 
 const cone_geometry = new THREE.ConeGeometry( 1, 2, 8 );
@@ -81,6 +81,7 @@ function animate() {
     
     //update boid pos
     BOIDS.separation(b_array,nb_boids);
+    BOIDS.alignment(b_array,nb_boids);
     //
     let j = 0;
     for(let i = 0; i<nb_boids ; i++ ){

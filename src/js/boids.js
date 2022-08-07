@@ -104,3 +104,31 @@ export function separation( boids_array , number_boids){
         }
     }
 }
+
+//! Alignment
+//* Calul la vitesse moyenne des voisin d'un boid et applique la moyenne au mouvement
+export function alignment(boids_array,number_boids){
+    for (let i = 0; i < number_boids; i++)
+    {   
+        var dummy = new Vector3(0,0,0);
+        var v = new Vector3(0,0,0);
+        var nb=0;
+        var d = 0;
+        for (let j = 0; j < number_boids; j++)
+        {
+            if (j!=i)
+            {
+                d= boids_array[i].distance_to(boids_array[j]);
+                if(d<30.0){
+                    v.addVectors(v,boids_array[j].vit);
+                    nb++;  
+                }        
+            }
+            if(nb!=0){
+                v.multiplyScalar(0.001/nb);
+                dummy.copy(boids_array[i].vit).normalize();
+                boids_array[i].set_vit = dummy.addVectors(dummy,v);
+            }
+        }
+    }
+}
