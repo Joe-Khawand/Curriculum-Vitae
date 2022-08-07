@@ -31,6 +31,7 @@ h1 {
 }
 
 #boids-js {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   background: #1488CC;
   display: flex;
   vertical-align: bottom;
