@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CnameWebpackPlugin = require('cname-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 const { mainModule } = require('process');
 
 module.exports ={
@@ -52,6 +53,18 @@ module.exports ={
         }),
         new MiniCssExtractPlugin({
           filename: 'main.css'
+        }),
+        new WebpackShellPluginNext({
+          onBuildStart:{
+            scripts: ['echo "===> Starting packing with WEBPACK 5" && echo ""'],
+            blocking: true,
+            parallel: false
+          },
+          onAfterDone:{
+            scripts: ['source copy.sh'],
+            blocking: true,
+            parallel: false
+          }
         }),
     ],
 }
