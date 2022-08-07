@@ -1,6 +1,6 @@
 import { Vector3 } from "three";
 
-// Virtual box containing the boids cube size 60 centre en 0
+// Virtual box containing the boids
 const  border_x=70.0;
 const  border_y=70.0;
 const  border_z=70.0;
@@ -28,7 +28,7 @@ export class Boid {
     }
     update_pos(dt){
         var dm = new Vector3();//dummy vector
-        //Evite les collision avec le cube
+        //Evite les collisions avec le cube
         if (this.position.x>= border_x)
         {
             this.vitesse.x = -Math.abs(this.vitesse.x);
@@ -92,7 +92,7 @@ export function separation( boids_array , number_boids){
 }
 
 //! Alignment
-//* Calul la vitesse moyenne des voisin d'un boid et applique la moyenne au mouvement
+//* Calcul la vitesse moyenne des voisin d'un boid et applique la moyenne au mouvement
 export function alignment(boids_array,number_boids){
     for (let i = 0; i < number_boids; i++)
     {   
