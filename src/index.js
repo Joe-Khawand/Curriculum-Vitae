@@ -6,6 +6,19 @@ import './styles/main.css';
 import * as THREE from 'three';
 import * as BOIDS from "./js/boids";
 
+let play;
+
+document.addEventListener( 'visibilitychange', ( event ) => {
+
+	play = document.hidden;
+    console.log("Page hidden = "+play);
+    if(play==false){console.log("Resuming animation");}
+    else{console.log("Pausing animation");}
+
+}, false );
+
+
+
 const container = document.getElementById( "boids-js" );//chose the html container 
 
 //*Create the 3D scene
@@ -76,9 +89,9 @@ window.addEventListener( 'resize', onWindowResize );//resize screen
 
 //*Animation function
 function animate() {
-	requestAnimationFrame( animate );
+    requestAnimationFrame( animate );
     //add animation in this block
-    
+
     //update clock
     delta = clock.getDelta();
     
@@ -88,21 +101,18 @@ function animate() {
     BOIDS.cohesion(b_array,nb_boids);
     //
     let j = 0;
-    for(let i = 0; i<nb_boids ; i++ ){
-        b_array[i].update_pos(delta);
-        dummy_boid.position.copy(b_array[i].pos)
-        dummy_boid.quaternion.setFromUnitVectors(axis, b_array[i].vit.clone().normalize());
-        dummy_boid.updateMatrix();
-        cone_mesh.setMatrixAt(j++,dummy_boid.matrix);
+    if(play == false || typeof play =="undefined"){//Stop animation if on another tab
+        for(let i = 0; i<nb_boids ; i++ ){
+            b_array[i].update_pos(delta);
+            dummy_boid.position.copy(b_array[i].pos)
+            dummy_boid.quaternion.setFromUnitVectors(axis, b_array[i].vit.clone().normalize());
+            dummy_boid.updateMatrix();
+            cone_mesh.setMatrixAt(j++,dummy_boid.matrix);
+        }
     }
     cone_mesh.instanceMatrix.needsUpdate = true;
-    
-    //rotate cube
-    //cube.rotation.x += 0.01;
-    //cube.rotation.y += 0.02;
-    
     //render
-	renderer.render( scene, camera );
+    renderer.render( scene, camera );
 }
 
 function onWindowResize() {
@@ -113,7 +123,6 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 
 }
-
 
 animate();
 
