@@ -1,5 +1,6 @@
 //! CSS Style file
 import './styles/main.css';
+import img from './assets/img/profile.jpg'
 
 //! --------------------------------- 3D script for main page ---------------------------------
 
