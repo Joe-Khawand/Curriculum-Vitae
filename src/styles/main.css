@@ -16,9 +16,54 @@ body {
     /*overflow: hidden; /* Hide scrollbars */
 }
 
-h1 {
-    margin: .67em 0;
-    font-size: 2.5rem;
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+nav,
+section {
+    display: block
+}
+
+h1,
+h2,
+h3,
+h4,
+strong {
+    margin-top: 1em;
+    padding-top: 1em;
+    line-height: 1.25;
+    color: #333
+}
+
+h2 {
+    font-size: 2rem
+}
+
+h3 {
+    font-size: 1.5rem
+}
+
+h4 {
+    font-size: 1rem
+}
+
+ol,
+ul {
+    padding-left: 40px
+}
+
+figure,
+ol,
+p,
+ul {
+    margin: 1em 0
+}
+
+a img {
+    border: 0
 }
 
 #boids-js {
@@ -139,25 +184,173 @@ h1 {
     font-size: 30px;
     cursor: pointer
 }
-
-.down .icon {
-    position: absolute;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    fill: #fff;
-    -webkit-animation: pulse 1.3s infinite;
-    animation: pulse 1.3s infinite
+.scroll-down {
+	position: absolute;
+	left: 50%;
+	bottom: 5vh;
+	display: block;
+	text-align: center;
+	font-size: 20px;
+	z-index: 1;
+	text-decoration: none;
+	text-shadow: 0;
+	width: 13px;
+	height: 13px;
+	border-bottom: 2px solid #fff;
+	border-right: 2px solid #fff;
+	z-index: 9;
+	-webkit-transform: translate(-50%, 0%) rotate(45deg);
+	-moz-transform: translate(-50%, 0%) rotate(45deg);
+	transform: translate(-50%, 0%) rotate(45deg);
+	-webkit-animation: fade_move_down 2s ease-in-out infinite;
+	-moz-animation: fade_move_down 2s ease-in-out infinite;
+	animation: fade_move_down 2s ease-in-out infinite;
 }
 
-.down .icon:active,
-.down .icon:hover,
-.footer a:active,
-.footer a:hover {
-    color: #4b5664
+
+/*animated scroll arrow animation*/
+@-webkit-keyframes fade_move_down {
+ 0% {
+-webkit-transform:translate(0, -10px) rotate(45deg);
+opacity: 0;
+}
+ 50% {
+opacity: 1;
+}
+ 100% {
+-webkit-transform:translate(0, 10px) rotate(45deg);
+opacity: 0;
+}
+}
+@-moz-keyframes fade_move_down {
+ 0% {
+-moz-transform:translate(0, -10px) rotate(45deg);
+opacity: 0;
+}
+ 50% {
+opacity: 1;
+}
+ 100% {
+-moz-transform:translate(0, 10px) rotate(45deg);
+opacity: 0;
+}
+}
+@keyframes fade_move_down {
+ 0% {
+transform:translate(0, -10px) rotate(45deg);
+opacity: 0;
+}
+ 50% {
+opacity: 1;
+}
+ 100% {
+transform:translate(0, 10px) rotate(45deg);
+opacity: 0;
+}
+}
+
+/*About*/
+#about {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 960px
+}
+
+@media only screen and (min-width:550px) {
+    #about {
+        width: 80%
+    }
+}
+
+.tech {
+    margin: 10px
+}
+
+.user {
+    text-align: center;
+    font-size: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user p {
+    font-size: 16px;
+}
+
+.user-details {
+    text-align: center;
+    margin: 5px auto
+}
+
+@media only screen and (min-width:550px) {
+    .user {
+        flex-wrap: nowrap;
+        font-size: 75px
+    }
+}
+
+
+/* ----------FOOTER---------- */
+.footer{
+    background-color: rgb(20,136,204);
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+.footer_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position:relative;
+    height:20vh;
+    background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+@keyframes move-forever {
+    0% {
+ transform: translate3d(-90px,0,0);
+    }
+    100% { 
+    transform: translate3d(85px,0,0);
+    }
+}
+  /*Shrinking for mobile*/
+@media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+    .footer_text {
+        height:30vh;
+      }
 }

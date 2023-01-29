@@ -12,9 +12,11 @@
         <meta name="author" content="Joe Khawand"/>
         <!-- Title -->
 		<title>Joe Khawand</title>
-	<link rel="icon" href="favicon.ico"><script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+	<link rel="icon" href="favicon.ico"><script defer src="bundle.js"></script><script defer src="scroll.js"></script><link href="main.css" rel="stylesheet"></head>
     <body>
         <script src="https://kit.fontawesome.com/57cde7eaf6.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+        <!--Main page-->
         <div id="boids-js">
             <div class="header">
               <h1>
@@ -40,7 +42,106 @@
                 <a class="link" href="#projects" data-scroll>Projects</a>
               </div>
             </div>
-            <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+            <a class="smoothscroll" href="#about"><div class="scroll-down"></div></a>
+        </div>
+        <!--About section-->
+        <section id="about">
+        
+          <!-- User Introduction-->
+          <div class="user-details">
+            <h1>About me</h1>
+            <picture>
+              <source
+                type="image/webp"
+                srcset="../src/assets/img/profile.jpg"
+                alt="Professional Me"
+                width="20%"
+                style="border-radius: 50%"
+              />
+              <img
+                src="../src/assets/img/profile.jpg"
+                alt="Professional Me"
+                width="20%"
+                style="border-radius: 50%"
+              />
+            </picture>
+            <p>
+              I am a student at Ecole Polytechnique, majoring in computer engineering.
+               I have a passion for data science, machine learning, and deep learning and have a deep understanding of autonomous
+                intelligent systems. I have experience in both low-level and high-level programming languages, and am constantly 
+                seeking new opportunities to deepen my knowledge and skills in this exciting field.
+            </p>
           </div>
+    
+          <!-- User Specifics -->
+          <div class="user">
+            <!-- Technology Stack #1: Languages -->
+            <div class="tech">
+              <h2>Languages</h2>
+              <i class="devicon-python-plain colored"></i>
+              <i class="devicon-java-plain-wordmark colored"></i>
+              <i class="devicon-c-line-wordmark colored"></i>
+              <i class="devicon-cplusplus-plain colored"></i>
+              <p>My favorite languages for systems programming, software engineering, and data analysis.</p>
+            </div>
+    
+            <!-- Technology Stack #2: Front-End -->
+            <div class="tech">
+              <h2>Web Dev</h2>
+              <i class="devicon-html5-plain-wordmark colored"></i>
+              <i class="devicon-css3-plain-wordmark colored"></i>
+              <i class="devicon-javascript-plain colored"></i>
+              <i class="devicon-webpack-plain-wordmark colored"></i>
+              <p>Web developpement languages and libraries used to make this website.</p>
+            </div>
+    
+            <!-- Technology Stack #3: Tools -->
+            
+            <div class="tech">
+              <h2>Tools</h2>
+              <i class="devicon-git-plain-wordmark colored"></i>
+              <i class="devicon-github-original-wordmark colored"></i>
+              <i class="devicon-docker-plain-wordmark colored"></i>
+              <i class="devicon-gitlab-plain-wordmark colored"></i>
+              <p>My tools for version control, code editing, and container orchestration.</p>
+            </div>
+            
+            <!-- Technology Stack #4: ML&DL -->
+            <div class="tech">
+              <h2>ML/DL</h2>
+              <i class="devicon-pytorch-original colored"></i>
+              <i class="devicon-tensorflow-original colored"></i>
+              <p>Tools used for Machine and Deep Learning.</p>
+            </div>
+            
+          </div>
+        </section>
+        <!--Project section-->
+        <section id="project">
+          
+        </section>
+        <footer class="footer">
+          <!--Waves Container-->
+          <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+            <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+            </svg>
+          </div>
+            <!--Waves end-->
+            <!--Content starts-->
+          <div class="footer_text">
+            <p>Made by Joe Khawand</p>
+          </div>
+            <!--Content ends-->
+        </footer>
     </body>
 </html>

@@ -9,6 +9,7 @@ module.exports ={
     mode : 'development',//options : development production
     entry: {
         bundle: path.resolve(__dirname, 'src/index.js'),
+        scroll: path.resolve(__dirname, 'src/scroll.js'),
       },
       output: {
         path: path.resolve(__dirname, 'docs'),
@@ -30,7 +31,7 @@ module.exports ={
           },
           {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            type: 'asset/img/jpg',
+            type: 'assets/img/',
           },
           {
             test: /\.css$/,
